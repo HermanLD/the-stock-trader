@@ -1,5 +1,38 @@
 <template>
   <div>
-    <h1>This is the Market</h1>
+    <h1 class="ml-3 mt-4">The Market</h1>
+    <div class="row no-gutters mr-3">
+      <div class="col-lg-4 col-md-6 col-sm-12" v-for="stock in marketOptions" :key="stock">
+        <b-card class="stock-card p-3 mt-3 ml-3">
+          <h2 slot="stock-name" class="stock-name">{{ stock.name }}</h2>
+          <div class="price my-5">
+            <p class="money-value" slot="money">{{ stock.symbol }}{{ stock.rate }}</p>
+          </div>
+            <p class="stock-qty">Qty Owned: <span>{{ stock.owned }}</span></p>
+            <form class="stock-input">
+              <label class="label">sellsome stock</label>
+              <input placeholder="Amount to sell" type="text" class="form-control" v-model="sellQty">
+              <button @click="sellStock" class="btn btn-primary submit-button">Sell</button>
+              <p>{{ sellQty }}</p>
+            </form>
+        </b-card>
+      </div>
+    </div>
   </div>
 </template>
+
+<script>
+import StockCard from '../components/StockCard.vue'
+import { mapState } from 'vuex'
+
+export default {
+  components: {
+    StockCard: StockCard
+  },
+  computed: {
+    ...mapState([
+      'marketOptions'
+    ])
+  }
+}
+</script>
