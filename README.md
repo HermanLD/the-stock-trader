@@ -1,5 +1,5 @@
 # the-stock-trader
-
+A fake crypto-stock exchange. User is able to save user data, load user, buy & sell stock.
 ## Project setup
 ```
 npm install
