@@ -1,38 +1,66 @@
 <template>
-  <div>
-    <b-card class="stock-card p-3 mt-3 ml-3">
-      <h2 slot="stock-name" class="stock-name">{{ stock.name }}</h2>
-      <div class="price my-5">
-        <p class="money-value" slot="money">{{ stock.symbol }}{{ stock.rate }}</p>
-      </div>
-        <p class="stock-qty">Qty Owned: <span>{{ stock.owned }}</span></p>
-        <form class="stock-input">
-          <label class="label">sellsome stock</label>
-          <input placeholder="Amount to sell" type="text" class="form-control" v-model="sellQty">
-          <button @click="sellStock" class="btn btn-primary submit-button">Sell</button>
-          <p>{{ sellQty }}</p>
-        </form>
-    </b-card>
+  <div class="col-lg-4 col-md-6 col-sm-12">
+    <transition name="slide" appear>
+      <b-card class="stock-card p-3 mt-3 ml-3">
+        <h2 class="stock-name">{{ stock.name }}</h2>
+        <div class="price my-5">
+          <p class="money-value">${{ stock.rate }}</p>
+        </div>
+        <p class="stock-qty">
+          Qty Owned: <span>{{ stock.own }}</span>
+        </p>
+        <div class="stock-input">
+          <label class="label">Sell some stock: ${{ saleTotal }}</label>
+          <input
+            v-model.number="sellQty"
+            placeholder="Amount to sell"
+            type="text"
+            class="form-control"
+          />
+          <button class="btn btn-primary submit-button" @click="sellStock">
+            Sell
+          </button>
+        </div>
+      </b-card>
+    </transition>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
+  props: {
+    stock: {
+      type: Object,
+      default: null
+    }
+  },
   data() {
     return {
-
+      sellQty: null
+    };
+  },
+  computed: {
+    saleTotal() {
+      return this.stock.rate * this.sellQty;
     }
   },
   methods: {
-    
-  },
-  props: ['stock'],
-  ...mapActions([
-    
-  ])
-}
+    ...mapActions({
+      sale: "sellStock"
+    }), //?Access this.sellStock & bind action to var
+    sellStock() {
+      const order = {
+        id: this.stock.id,
+        total: this.saleTotal,
+        qty: this.sellQty
+      };
+      this.sale(order);
+      this.sellQty = null;
+    }
+  }
+};
 </script>
 
 <style lang="css" scoped>
@@ -42,7 +70,7 @@ export default {
 }
 
 .stock-card:hover {
-  background-color: hsl(228, 28%, 23%)
+  background-color: hsl(228, 28%, 23%);
 }
 
 .money-value {
