@@ -33,10 +33,9 @@
 
 A fake crypto-stock exchange. User is able to save user data, load user, buy & sell stock.
 
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+- Using Vuex and Vue-Router
+- Structuring a Vue Project
+- Vue CLI
 
 ### Built With
 
