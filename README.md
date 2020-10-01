@@ -33,8 +33,12 @@
 
 A fake crypto-stock exchange. User is able to save user data, load user, buy & sell stock.
 
+Learning more advanced Vue concepts:
+
 - Using Vuex and Vue-Router
 - Structuring a Vue Project
+- Advanced effects
+- Component Lifecycle
 - Vue CLI
 
 ### Built With
@@ -42,7 +46,7 @@ A fake crypto-stock exchange. User is able to save user data, load user, buy & s
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [Vue.js](https://vuejs.org/)
-- [Tailwind](https://tailwindcss.com/)
+- [BootstrapVue](https://bootstrap-vue.org/)
 
 ## How To Use
 
@@ -77,4 +81,3 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - Website [hermandardon.dev](https://hermandardon.dev)
 - GitHub [@HermanLD](https://github.com/HermanLD)
 - linkedIn [herman-dardon](https://www.linkedin.com/in/herman-dardon/)
-- Twitter [@your-twitter](https://{twitter.com/your-username})
