@@ -9,7 +9,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://wonderful-quotes-one.now.sh/">
+    <a href="https://the-stock-trader.vercel.app/">
       SITE
     </a>
   </h3>
